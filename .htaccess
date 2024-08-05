@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirect non-www to www (remove .html extension)
+RewriteCond %{HTTP_HOST} ^datasensegroup\.co [NC]
+RewriteRule ^(.*)$ https://www.datasensegroup.co/$1 [L,R=301]
+
+# Remove .html extension if it exists
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
